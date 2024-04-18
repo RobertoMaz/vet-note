@@ -1,9 +1,20 @@
 <script setup>
   import Header from './components/Header.vue'
   import Formulario from './components/Formulario.vue'
-  import { ref } from 'vue'
+  import { ref , reactive} from 'vue'
 
-  const patient = ref([])
+  const patients = ref([])
+
+  
+  const patient = reactive({
+        petName: '',
+        owner: '',
+        email:'',
+        register:'',
+        symptoms:''
+    })
+
+
 </script>
 
 <template>
@@ -11,7 +22,14 @@
     <Header />
     <div class="mt-12 md:flex">
       <Formulario 
-        
+        v-model:petName="patient.petName"
+        v-model:owner="patient.owner"
+        v-model:email="patient.email"
+        v-model:register="patient.register"
+        v-model:symptoms="patient.symptoms"
+
+
+
       />
 
       <div class="md:w-1/2 md:h-screen overflow-y-scroll">

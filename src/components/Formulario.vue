@@ -10,13 +10,8 @@
         message: ''
     })
 
-    const patient = reactive({
-        petName: '',
-        owner: '',
-        email:'',
-        register:'',
-        symptoms:''
-    })
+    defineEmits(['update:petName','update:owner','update:email','update:register','update:symptoms',])
+
 
     const validateForm = () => {
         if(Object.values(patient).includes('')){
@@ -53,7 +48,6 @@
                     type="text"
                     placeholder="Nombre de la mascota"
                     class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                    v-model="patient.petName"
                     />
                 </div>
                 <div class="mb-5">
@@ -67,7 +61,6 @@
                     type="text"
                     placeholder="Nombre del propietario"
                     class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                    v-model="patient.owner"
                 />
             </div>
             <div class="mb-5">
@@ -81,7 +74,6 @@
                     type="email"
                     placeholder="Email del propietario"
                     class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                    v-model="patient.email"
                 />
             </div>
             <div class="mb-5">
@@ -94,7 +86,6 @@
                     id="register"
                     type="date"
                     class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                    v-model="patient.register"
                 />
             </div>
             <div class="mb-5">
@@ -107,7 +98,6 @@
                     id="symptoms"
                     placeholder="Describe los Síntomas"
                     class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-40"
-                    v-model="patient.symptoms"
                 />
             </div>
             <input 
