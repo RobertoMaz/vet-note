@@ -29,8 +29,9 @@
       patient.symptoms = ''
     }
 
-    const updatePatient = () => {
-      console.log("Estoy haciendo el update")
+    const updatePatient = (id) => {
+      const patientEdit = patients.value.filter(patien => patien.id === id)[0]
+      Object.assign(patient, patientEdit)
     }
 
 </script>
