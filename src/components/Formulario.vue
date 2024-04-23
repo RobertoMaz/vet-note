@@ -2,7 +2,7 @@
     // import { ref } from 'vue'
     // const petName = ref('')
 
-    import { reactive } from 'vue'
+    import { reactive, computed } from 'vue'
     import AlertMessage from './AlertMessage.vue'
 
     const alertMessage = reactive({
@@ -13,6 +13,10 @@
     const emit = defineEmits(['update:petName','update:owner','update:email','update:register','update:symptoms', 'save-patient'])
 
     const props = defineProps({
+        id: {
+            type: [String, null],
+            required: true
+        },
         petName: {
             type: String,
             required: true
@@ -33,6 +37,10 @@
             type: String,
             required: true
         }
+    })
+
+    const edit = computed(() => {
+        return props.id
     })
 
 
@@ -149,7 +157,7 @@
                 class="bg-indigo-600 w-full p-3 text-white uppercase font-bold
                  hover:bg-indigo-700 cursor-pointer transition-colors
                  rounded-md"
-                 value="Registrar paciente"
+                 :value="[edit ? 'Guardar Cambios': 'Registrar paciente']"
             />
         </form>
     </div>
